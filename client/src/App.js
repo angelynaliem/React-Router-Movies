@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Route } from 'react-router-dom';
+import Movie from './Movies/Movie';
+import { Route, Switch } from 'react-router-dom';
+import MovieList from './Movies/MovieList';
+
 
 import SavedList from './Movies/SavedList';
 
@@ -27,15 +30,15 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <div>
       <SavedList list={[ /* This is stretch */]} />
-      <Route path="/" component={MovieList} />
-      <Route path="/movies/:{id}" component={Movie} />
-    </Router>
+      <Route path="/movies/:id" component={Movie} />
+      <Route exact path="/" render={(props) => {
+        return <MovieList history={props.history} movies={movieList} />
+      }} />
+    </div>
   );
 };
 
 export default App;
 
-// one route that will take an id parameter after/movies/ 
-// (ex: /movies/2, /movies/3 where the id is dynamic). This route should load the Movie component.
