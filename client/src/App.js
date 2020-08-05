@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Route } from 'react-router-dom';
 
 import SavedList from './Movies/SavedList';
 
@@ -26,11 +27,15 @@ const App = () => {
   };
 
   return (
-    <div>
+    <Router>
       <SavedList list={[ /* This is stretch */]} />
-      <div>Replace this Div with your Routes</div>
-    </div>
+      <Route path="/" component={MovieList} />
+      <Route path="/movies/:{id}" component={Movie} />
+    </Router>
   );
 };
 
 export default App;
+
+// one route that will take an id parameter after/movies/ 
+// (ex: /movies/2, /movies/3 where the id is dynamic). This route should load the Movie component.
