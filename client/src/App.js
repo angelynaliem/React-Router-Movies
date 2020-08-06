@@ -37,7 +37,7 @@ const App = () => {
         <Movie movies={movieList} />
         </Route>
         <Route exact path="/" render={(props) => {
-        return <MovieList history={props.history} movies={movieList} />
+        return <MovieList movies={movieList} />
       }} />
      </Switch>
 
