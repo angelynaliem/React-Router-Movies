@@ -33,7 +33,9 @@ const App = () => {
       <SavedList list={[ /* This is stretch */]} />
 
       <Switch>
-        <Route path="/movies/:id" >
+        <Route path="/movies/:id" render={props => {
+          const { id } = props.match.params;
+        }}>
         <Movie movies={movieList} />
         </Route>
         <Route exact path="/" render={(props) => {
