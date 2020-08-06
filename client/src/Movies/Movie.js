@@ -4,13 +4,12 @@ import { useParams } from 'react-router-dom'
 
 
 const Movie = (props) => {
+
   const [movie, setMovie] = useState();
   // const [id, setId] = useState(1);
   
   const  params  = useParams();
     
-
-
   useEffect(() => {
 
     const id = params.id;
@@ -28,7 +27,7 @@ const Movie = (props) => {
           console.error(error);
         });
 
-  },[movie, params.id]);
+  },[params.id]);
   
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = evt => {
