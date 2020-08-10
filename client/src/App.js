@@ -34,17 +34,23 @@ const App = () => {
 
       <SavedList list={[ /* This is stretch */]} />
 
+      {/* //Add Switch here to pick a Route  */}
+
       <Switch>
-        
-        <Route path="/movies/:id" render={props => {
-          const { id } = props.match.params;
-        }}>
-        <Movie movies={movieList} />
+
+        {/* Add Route to specify a URL path */}
+        {/* Make ID dynamic to enable opening a particular movie card. No props needed in the parent element. */}
+
+        <Route path="/movies/:id" > 
+        {/* render={props => { */}
+          {/* // const { id } = props.match.params;
+        // }}> */}
+          <Movie />
         </Route>
 
-        <Route exact path="/" render={(props) => {
-        return <MovieList movies={movieList} />
-      }} />
+        <Route exact path="/" render={() => 
+          <MovieList movies={movieList} />
+      } />
 
      </Switch>
 

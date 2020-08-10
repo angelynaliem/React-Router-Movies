@@ -6,13 +6,17 @@ import { useParams } from 'react-router-dom'
 const Movie = (props) => {
 
   const [movie, setMovie] = useState();
-  // const [id, setId] = useState(1);
+
+  // Use params to refer to the dynamic variable inside the get request.
   
-  const  params  = useParams();
-    
+  const  params   = useParams();
+  
   useEffect(() => {
 
+    // Declare an id variable and bind the dynamic id variable with the useParams.
+
     const id = params.id;
+    console.log('This is my params', params)
   
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
@@ -21,6 +25,7 @@ const Movie = (props) => {
         .get(`http://localhost:5000/api/movies/${id}`)
         .then(response => {
           setMovie(response.data);
+          console.log('This is my params', params)
    
         })
         .catch(error => {
@@ -28,6 +33,8 @@ const Movie = (props) => {
         });
 
   },[params.id]);
+
+  console.log('This is my params', params)
   
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = evt => {
